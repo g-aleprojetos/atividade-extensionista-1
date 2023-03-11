@@ -1,0 +1,101 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id            String        @id @default(uuid())
+  nome          String
+  email         String        @unique
+  cargo         String
+  senha         String
+  role          Role          @default(USER)
+  criadoPor     String?
+  criadoEm      DateTime?
+  atualizadoPor String?
+  atulizadoEm   DateTime?     
+  deletado      Boolean?       @default(false)
+  deletadoPor   String?        
+  deletadoEm    DateTime?     
+  refresh_token RefreshToken?
+
+  @@map("Usuario")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model RefreshToken {
+  id        String  @id @default(uuid())
+  expiresIn Int
+  usuario   Usuario @relation(fields: [usuarioId], references: [id])
+  usuarioId String  @unique
+
+  @@map("refresh_token")
+}
+
+model Device {
+  id               String    @id @default(uuid())
+  nome             String?
+  uniqueID         String    @unique
+  latitude         String
+  longitude        String
+  leitura_sensores Boolean?
+  nivel_agua       Boolean?
+  criadoPor        String?
+  criadoEm         DateTime?
+  atualizadoPor    String?
+  atulizadoEm      DateTime? 
+  deletado         Boolean?   @default(false)
+  deletadoPor      String?
+  deletadoEm       DateTime? 
+  endereco         Endereco?  @relation(fields: [endereco_Id], references: [id])
+  endereco_Id      String?    @unique
+  Leitura          Leitura[]
+
+  @@map("Device")
+}
+
+model Endereco {
+  id            String    @id @default(uuid())
+  device        Device?
+  localizacao   String?
+  endereco      String?
+  bairro        String?
+  cidade        String?
+  uf            String?
+  criadoPor     String?
+  criadoEm      DateTime? 
+  atualizadoPor String?
+  atualizadoEm  DateTime? 
+  deletado      Boolean?   @default(false)
+  deletadoPor   String?
+  deletadoEm    DateTime?
+
+  @@map("Endereco")
+}
+
+model Leitura {
+  id               String     @id @default(uuid())
+  device           Device     @relation(fields: [device_id], references: [id])
+  device_id        String     
+ 	anemometro       Float?
+  direcao_vento    Float?
+	pluviometro      Float?
+	temperatura      Float?
+	umidade          Float?
+	nivel_agua       Int?
+	pressao          Float?
+  data_leitura     DateTime   @default(now())
+  
+  @@map("Leitura")
+}

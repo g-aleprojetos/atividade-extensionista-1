@@ -1,0 +1,162 @@
+[
+    {
+        "id": "721ac1ea1d1fa991",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "91fddbb3c374e0de",
+        "type": "mqtt-broker",
+        "name": "MQttServer",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "525f3bad1110d3cb",
+        "type": "MySQLdatabase",
+        "name": "monitoramento_chuva DB",
+        "host": "127.0.0.1",
+        "port": "3306",
+        "db": "monitoramento_chuva",
+        "tz": "-3",
+        "charset": "UTF8"
+    },
+    {
+        "id": "3782c9a41d7382a7",
+        "type": "debug",
+        "z": "721ac1ea1d1fa991",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1100,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "e920b12f38b95df0",
+        "type": "mqtt in",
+        "z": "721ac1ea1d1fa991",
+        "name": "",
+        "topic": "device/+",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "91fddbb3c374e0de",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 120,
+        "y": 140,
+        "wires": [
+            [
+                "95595117e10161fd"
+            ]
+        ]
+    },
+    {
+        "id": "3165b48a524fdcff",
+        "type": "function",
+        "z": "721ac1ea1d1fa991",
+        "name": "function 1",
+        "func": "\nif (msg.payload === \"MQTT Inicializando\"){\n    return \n}\n\nconst v = msg.payload.data\n\nvar tamanho = Object.keys(v).length;\n\nlet idLeitura;\nlet data_leitura;\nlet idDevice;\nlet anemometro;\nlet direcao_vento;\nlet pluviometro;\nlet temperatura; \nlet umidade;\nlet nivel_agua;\nlet pressao;\n\nif(tamanho === 8){\n     idLeitura = msg.payload.idLeitura;\n     data_leitura = msg.payload.data_leitura;\n     idDevice = msg.payload.data[1];\n     anemometro = msg.payload.data[2];\n     direcao_vento = msg.payload.data[3];\n     pluviometro = msg.payload.data[4];\n     temperatura = msg.payload.data[5];\n     umidade = msg.payload.data[6];\n     pressao = msg.payload.data[7];\n\n    msg.payload = {};\n    msg.payload.idLeitura = idLeitura;\n    msg.payload.idDevice = idDevice;\n    msg.payload.anemometro = anemometro;\n    msg.payload.direcao_vento = direcao_vento;\n    msg.payload.pluviometro = pluviometro;\n    msg.payload.temperatura = temperatura;\n    msg.payload.umidade = umidade;\n    msg.payload.pressao = pressao;\n    msg.payload.data_leitura = data_leitura;\n\n    msg.topic = `INSERT INTO Leituras(idLeitura,idDevice,anemometro,direcao_vento,pluviometro,temperatura,umidade,pressao,data_leitura)value(\"${idLeitura}\",\"${idDevice}\", ${anemometro}, \"${direcao_vento}\",${pluviometro},${temperatura},${umidade},${pressao},\"${data_leitura}\")`;\n\n}else{\n    idLeitura = msg.payload.idLeitura;\n    data_leitura = msg.payload.data_leitura;\n    idDevice = msg.payload.data[1];\n    anemometro = msg.payload.data[2];\n    direcao_vento = msg.payload.data[3];\n    pluviometro = msg.payload.data[4];\n    temperatura = msg.payload.data[5];\n    umidade = msg.payload.data[6];\n    nivel_agua = msg.payload.data[7];\n    pressao = msg.payload.data[8];\n\n    msg.payload = {};\n    msg.payload.idLeitura = idLeitura;\n    msg.payload.idDevice = idDevice;\n    msg.payload.anemometro = anemometro;\n    msg.payload.direcao_vento = direcao_vento;\n    msg.payload.pluviometro = pluviometro;\n    msg.payload.temperatura = temperatura;\n    msg.payload.umidade = umidade;\n    msg.payload.nivel_agua = nivel_agua;\n    msg.payload.pressao = pressao;\n    msg.payload.data_leitura = data_leitura;\n\n    msg.topic = `INSERT INTO Leituras(idLeitura,idDevice,anemometro,direcao_vento,pluviometro,temperatura,umidade,pressao,nivel_agua,data_leitura)value(\"${idLeitura}\",\"${idDevice}\", ${anemometro}, \"${direcao_vento}\",${pluviometro},${temperatura},${umidade},${pressao},${nivel_agua},\"${data_leitura}\")`;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 140,
+        "wires": [
+            [
+                "d6e2ab8b1370555a"
+            ]
+        ]
+    },
+    {
+        "id": "95595117e10161fd",
+        "type": "uuid",
+        "z": "721ac1ea1d1fa991",
+        "uuidVersion": "v4",
+        "namespaceType": "",
+        "namespace": "",
+        "namespaceCustom": "",
+        "name": "geradorID",
+        "field": "payload.idLeitura",
+        "fieldType": "msg",
+        "x": 300,
+        "y": 140,
+        "wires": [
+            [
+                "57ef8bc119f62cef"
+            ]
+        ]
+    },
+    {
+        "id": "d6e2ab8b1370555a",
+        "type": "mysql",
+        "z": "721ac1ea1d1fa991",
+        "mydb": "525f3bad1110d3cb",
+        "name": "mysql db",
+        "x": 920,
+        "y": 140,
+        "wires": [
+            [
+                "3782c9a41d7382a7"
+            ]
+        ]
+    },
+    {
+        "id": "57ef8bc119f62cef",
+        "type": "moment",
+        "z": "721ac1ea1d1fa991",
+        "name": "",
+        "topic": "",
+        "input": "",
+        "inputType": "msg",
+        "inTz": "America/Sao_Paulo",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "",
+        "locale": "pt-BR",
+        "output": "payload.data_leitura",
+        "outputType": "msg",
+        "outTz": "America/Sao_Paulo",
+        "x": 520,
+        "y": 140,
+        "wires": [
+            [
+                "3165b48a524fdcff"
+            ]
+        ]
+    }
+]

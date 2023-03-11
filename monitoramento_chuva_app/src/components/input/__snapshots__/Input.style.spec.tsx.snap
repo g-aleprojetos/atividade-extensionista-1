@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input.styles Container DEVE ser igual ao snapshot 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin: 0.813rem;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Input.styles ContainerInput DEVE ser igual ao snapshot 1`] = `
+.c0 {
+  width: 23.563rem;
+  height: 2.125rem;
+  padding: 0.5rem;
+  border: 1px solid #000000;
+  border-radius: 0.313rem;
+  font-size: 16px;
+}
+
+<input
+  className="c0"
+/>
+`;
+
+exports[`Input.styles Label DEVE ser igual ao snapshot 1`] = `
+.c0 {
+  margin: 0.5rem;
+}
+
+<label
+  className="c0"
+/>
+`;

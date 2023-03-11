@@ -1,0 +1,17 @@
+export default {
+  px1: '0.063rem',
+  px2: '0.125rem',
+  px3: '0.188rem',
+  px5: '0.313rem',
+  px8: '0.5rem',
+  px13: '0.813rem',
+  px21: '1.313rem',
+  px34: '2.125rem',
+  px55: '3.438rem',
+  px89: '5.563rem',
+  px144: '9rem',
+  px233: '14.563rem',
+  px377: '23.563rem',
+  px610: '38.125rem',
+  media_768: '768px',
+};

@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`menu.styles ContainerContent DEVE ser igual ao snapshot 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-flow: row nowrap;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+  position: static;
+  background-color: 'transparent';
+  -webkit-transform: 'none';
+  -ms-transform: 'none';
+  transform: 'none';
+  top: 'auto';
+  right: 'auto';
+  width: 'auto';
+  height: auto;
+  padding-top: 'auto';
+  -webkit-transition: 'none';
+  transition: 'none';
+}
+
+<ul
+  className="c0"
+/>
+`;
+
+exports[`menu.styles ContainerNav DEVE ser igual ao snapshot 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 5.563rem;
+  padding-right: 3.438rem;
+}
+
+<nav
+  className="c0"
+/>
+`;
+
+exports[`menu.styles Item DEVE ser igual ao snapshot. 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 0.5rempx;
+  margin: 0.313rem 1.313rem;
+  color: #ffffff;
+}
+
+<li
+  className="c0"
+/>
+`;
+
+exports[`menu.styles ItemNav DEVE ser igual ao snapshot QUANDO "isActive" for false. 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 0.5rempx;
+  margin: 0.313rem 1.313rem;
+  color: #ffffff;
+}
+
+<li
+  className="c0"
+/>
+`;
+
+exports[`menu.styles ItemNav DEVE ser igual ao snapshot QUANDO "isActive" for true. 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 0.5rempx;
+  margin: 0.313rem 1.313rem;
+  color: #ffffff;
+}
+
+<li
+  className="c0"
+/>
+`;

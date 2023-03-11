@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Texto Renderização Texto2XSmall DEVE ser igual ao snapshot 1`] = `
+<p
+  className="sc-bcXHqe fXtsvG"
+>
+  Teste
+</p>
+`;
+
+exports[`Texto Renderização Texto3XSmall DEVE ser igual ao snapshot 1`] = `
+<p
+  className="sc-bcXHqe lbnBAk"
+>
+  Teste
+</p>
+`;
+
+exports[`Texto Renderização TextoMedium DEVE ser igual ao snapshot 1`] = `
+<p
+  className="sc-bcXHqe kaiKx"
+>
+  Teste
+</p>
+`;
+
+exports[`Texto Renderização TextoSmall DEVE ser igual ao snapshot 1`] = `
+<p
+  className="sc-bcXHqe lltxVm"
+>
+  Teste
+</p>
+`;
+
+exports[`Texto Renderização TextoXSmall DEVE ser igual ao snapshot 1`] = `
+<p
+  className="sc-bcXHqe cPPGUU"
+>
+  Teste
+</p>
+`;

@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Botao.styles Container DEVE ser igual ao snapshot 1`] = `
+.c0 {
+  margin: 15px;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Botao.styles ContainerBotao DEVE ser igual ao snapshot 1`] = `
+.c0 {
+  background-color: #04c582;
+  border-radius: 8px;
+  border-style: none;
+  padding: 8px 60px;
+  cursor: pointer;
+}
+
+<button
+  className="c0"
+/>
+`;
